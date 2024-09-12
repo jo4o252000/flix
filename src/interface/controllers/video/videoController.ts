@@ -6,8 +6,9 @@ export class VideoController {
 
     async saveVideo(req: Request, res: Response) {
         const videoPath = req.file?.path || '';
+        const bodyVideo = req.body;
         
-        await this.saveNewVideo.execute(videoPath);
+        await this.saveNewVideo.execute(videoPath, bodyVideo);
         res.send("sajhndfiashnfahsf")
     }
 }
