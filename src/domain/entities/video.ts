@@ -1,8 +1,12 @@
 export class Video{
     constructor(
-        public readonly id: string,
         public name: string,
+        public description: string,
+        public pathVideo: string,
         public releaseDate: Date,
-        public video: string
+        public videoWidht: number,
+        public videoHeight: number,
+        public videoDuration: number,
+        public videoSize: number
     ) {}
 }
