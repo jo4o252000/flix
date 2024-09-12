@@ -10,8 +10,8 @@ export class InMemoryVideoRepository implements VideoRepository{
         video:'sjdfnhas'
     };
 
-    async create(): Promise<Video> {
-        console.log("chegou aqui")
+    async create(videoMetadata:any): Promise<Video> {
+        console.log("chegou aqui", videoMetadata)
         return this.video;
     }
 }
