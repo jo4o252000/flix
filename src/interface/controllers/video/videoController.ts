@@ -7,7 +7,6 @@ export class VideoController {
 
     async saveVideo(req: Request, res: Response) {
         const videoPath = req.file?.path || '';
-        console.log('jjasfjdna', videoPath)
         ffmpeg.ffprobe(videoPath, (err, metadata) => {
             if (err) {
                 return res.status(500).send('Erro ao extrair metadados');
