@@ -7,8 +7,7 @@ export interface VideoRepository{
 export interface IVideoMetadata{
     name: string,
     description: string,
-    pathVideo: string,
-    releaseDate: Date,
+    path: string,
     videoWidht: number,
     videoHeight: number,
     videoDuration: number,

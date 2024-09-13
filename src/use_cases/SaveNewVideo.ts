@@ -8,14 +8,14 @@ export class SaveNewVideo{
 
     async execute(videoPath:any, videoMetadata: IVideoMetadata){
         const metadata = await decoderVideo(videoPath)
-
         const streamsMetaData = metadata.streams[0];
         const formatMetaData = metadata.format;
 
         videoMetadata["videoWidht"] = streamsMetaData?.width
         videoMetadata["videoHeight"] = streamsMetaData?.height
-        videoMetadata["videoDuration"] = streamsMetaData?.duration
+        videoMetadata["videoDuration"] = formatMetaData?.duration
         videoMetadata["videoSize"] = formatMetaData?.size
+        videoMetadata["path"] = formatMetaData?.filename
 
         return await this.videoRepository.create(videoMetadata);
     }
