@@ -1,4 +1,4 @@
 node_modules
 src/filmes
 src/upload
-package-lock
+package-lock.json
