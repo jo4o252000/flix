@@ -12,5 +12,4 @@ export interface IVideoMetadata{
     videoHeight: number,
     videoDuration: number,
     videoSize: number
-    
 }
