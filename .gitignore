@@ -1,4 +1,4 @@
 node_modules
 src/filmes
 src/upload
-package-lock.json
+git rm --cached package-lock.json
