@@ -1,8 +1,10 @@
 import  express  from "express";
-import { videoRoutes } from "./interface/routes/videoRoutes";
+import { videoRoutes } from "./presentation/routes/videoRoutes";
 import cors from 'cors';
-import {errorHandler} from './interface/middleware/errorHandler';
+import {errorHandler} from './presentation/middleware/errorHandler';
 import dotenv from 'dotenv';
+import {mysqlConnect} from './infrastructure/db/mysql/connect';
+
 
 const app = express();
 dotenv.config();
@@ -14,6 +16,12 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT_API;
 
-app.listen(PORT, () => {
-    console.log(`servidor rodando no enderaço http://localhost:${PORT}`)
-})
+inicialize();
+
+async function inicialize () {
+    await mysqlConnect();
+
+    app.listen(PORT, () => {
+        console.log(`servidor rodando no endereço http://localhost:${PORT}`)
+    })        
+}
