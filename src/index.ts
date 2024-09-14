@@ -1,9 +1,10 @@
 import  express  from "express";
-import { videoRoutes } from "./presentation/routes/videoRoutes";
+import { videoRoutes } from "./presentation/routes/media/videoRoutes";
 import cors from 'cors';
 import {errorHandler} from './presentation/middleware/errorHandler';
 import dotenv from 'dotenv';
 import {mysqlConnect} from './infrastructure/db/mysql/connect';
+import {routes} from './presentation/routes/routes'
 
 
 const app = express();
@@ -11,8 +12,9 @@ dotenv.config();
 
 app.use(express.json());
 app.use(cors({origin:"*"}));
-app.use("/api", videoRoutes);
 app.use(errorHandler)
+
+routes(app);
 
 const PORT = process.env.PORT_API;
 

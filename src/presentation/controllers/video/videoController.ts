@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { SaveNewVideo } from "../../../use_cases/SaveNewVideo";
+import { SaveNewVideo } from "../../../use_cases/media/SaveNewVideo";
 import Busboy from 'busboy';
 import fs from "fs";
 import path from 'path';

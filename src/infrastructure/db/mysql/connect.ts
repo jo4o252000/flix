@@ -28,7 +28,7 @@ export async function mysqlConnect() {
     try {
         await sequelizeConnect.authenticate();
         console.log('Conexão com o banco de dados MySQL feita com sucesso.');
-        sequelizeConnect.sync({force:false})
+        sequelizeConnect.sync({alter:true})
         .then(() => {
             console.log('Modelos sincronizados com o banco de dados.');
         })

@@ -1,6 +1,5 @@
-import { VideoRepository } from "../domain/interfaces/VideoRepository";
-import {decoderVideo} from '../utils/decoderVideo'
-import { IVideoMetadata } from "../domain/interfaces/VideoRepository";
+import { VideoRepository, IVideoMetadata } from "../../domain/interfaces/IVideoRepository";
+import {decoderVideo} from '../../utils/decoderVideo';
 
 
 export class SaveNewVideo{

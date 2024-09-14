@@ -1,4 +1,4 @@
-import {DataTypes, Model, Sequelize} from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import sequelizeConnect from '../../db/mysql/connect'
 
 class Categories extends Model{}
@@ -18,6 +18,9 @@ Categories.init(
     }, {
         sequelize: sequelizeConnect,
         modelName: 'categories',
+        tableName: 'categories',
+        timestamps: false,
+        underscored: true
     }
 )
 
