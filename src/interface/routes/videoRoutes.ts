@@ -9,6 +9,6 @@ const bookRepository = new InMemoryVideoRepository();
 const saveNewVideo = new SaveNewVideo(bookRepository);
 const videoController = new VideoController(saveNewVideo);
 
-router.get("/video", (req, res) => videoController.saveVideo(req, res));
+router.post("/video/update", (req, res) => videoController.saveVideo(req, res));
 
 export {router as videoRoutes}
