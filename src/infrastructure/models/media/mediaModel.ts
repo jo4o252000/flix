@@ -39,7 +39,7 @@ Media.init(
             allowNull:false
         },
         release_date: {
-            type: DataTypes.DATE
+            type: DataTypes.DATEONLY
         },
         media_type: {
             type: DataTypes.STRING,

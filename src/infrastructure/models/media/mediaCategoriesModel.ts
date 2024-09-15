@@ -1,23 +1,32 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelizeConnect from '../../db/mysql/connect'
+import Media from './mediaModel';
+import Categories from './CategoriesModel';
 
 class MediaCategory extends Model {}
 
 MediaCategory.init({
     media_id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
-    },
-    category_id: {
+        references: {
+          model: Media,
+          key: 'media_id'
+        },
+        onDelete: 'CASCADE'
+      },
+      category_id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
-    }
+        references: {
+          model: Categories,
+          key: 'category_id'
+        },
+        onDelete: 'CASCADE'
+      }
 }, {
     sequelize: sequelizeConnect,
-    modelName: 'MediaCategory',
     tableName: 'media_categories',
     timestamps: false, 
-    underscored: true 
+    
 });
 
 export default MediaCategory;

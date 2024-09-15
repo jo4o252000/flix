@@ -11,10 +11,11 @@ export class VideoController {
         const busboy = Busboy({headers: req.headers})
         let videoPath:any;
         let bodyVideo: any = {};
+        let categories: any = []
 
         busboy.on('file', (fieldname:any, file:any, filename:any) => {
-            const teste = filename
-            videoPath = path.join('src/upload', teste.filename)
+            const fileName = filename
+            videoPath = path.join('src/upload', fileName.filename)
 
             const writeStream = fs.createWriteStream(videoPath);
 
@@ -32,12 +33,16 @@ export class VideoController {
 
         busboy.on('field', (fieldname, value) => {
             bodyVideo[fieldname] = value
+            if(fieldname === 'categories'){
+                const categoriesMedia = value.split(',')//quando o front estiver pronto remover esse split
+                categories = categoriesMedia;
+            }
         })
 
         busboy.on('finish', async () => {
             try {
                 if (videoPath) {
-                    await this.saveNewVideo.execute(videoPath, bodyVideo);
+                    await this.saveNewVideo.execute(videoPath, bodyVideo, categories);
                     res.send("Arquivo enviado e salvo com sucesso");
                 } else {
                     res.status(400).send("Nenhum arquivo enviado");
