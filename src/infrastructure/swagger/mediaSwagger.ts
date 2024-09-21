@@ -52,3 +52,21 @@
  *       200:
  *         description: Vídeo salvo com sucesso
  */
+
+/**
+ * @swagger
+ * /api/new/category:
+ *   post:
+ *     summary: Cria uma nova catregoria de filme
+ *     tags: [Media]
+ *     parameters:
+ *       - name: name
+ *         in: query
+ *         required: true
+ *         description: Nome da categoria
+ *         schema: 
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Vídeo salvo com sucesso
+ */
