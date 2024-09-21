@@ -4,13 +4,13 @@ import { Express } from "express";
 
 const options = {
     definition: {
-        openapi:"1.0.0",
+        openapi:"3.0.0",
         info: {
-            title:"Clean Architecture API",
+            title:"JVFLIX",
             version:"1.0.0",
         },
     },
-    apis: ["./src/presentation/routes/*.ts"],
+    apis: ["./src/infrastructure/swagger/*.ts"],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
