@@ -5,6 +5,7 @@ import {errorHandler} from './presentation/middleware/errorHandler';
 import dotenv from 'dotenv';
 import {mysqlConnect} from './infrastructure/db/mysql/connect';
 import {routes} from './presentation/routes/routes'
+import setupSwagger from './infrastructure/swagger/swagger'
 
 
 const app = express();
@@ -13,6 +14,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cors({origin:"*"}));
 app.use(errorHandler)
+setupSwagger(app)
 
 routes(app);
 

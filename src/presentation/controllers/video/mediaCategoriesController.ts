@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { SaveNewCategories } from "../../../use_cases/media/SaveNewCategories";
 
 export class CategoryController{
