@@ -70,3 +70,14 @@
  *       200:
  *         description: Vídeo salvo com sucesso
  */
+
+/**
+ * @swagger
+ * /api/films:
+ *   get:
+ *     summary: Nessa rota é possivel passar uma query category onde é possivel informar o id da category e retornar apenas o filmes dessa categoria
+ *     tags: [Media]
+ *     responses:
+ *       200: 
+ *         description: Retornar todos os filmes encontrados
+ */
