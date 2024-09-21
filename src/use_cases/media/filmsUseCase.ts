@@ -2,10 +2,10 @@ import { VideoRepository, IVideoMetadata } from "../../domain/interfaces/IVideoR
 import {decoderVideo} from '../../utils/decoderVideo';
 
 
-export class SaveNewVideo{
+export class FilmsUseCase{
     constructor(private videoRepository: VideoRepository) {}
 
-    async execute(videoPath:any, videoMetadata: IVideoMetadata, categories:any){
+    async saveFilm(videoPath:any, videoMetadata: IVideoMetadata, categories:any){
         const metadata = await decoderVideo(videoPath)
         const streamsMetaData = metadata.streams[0];
         const formatMetaData = metadata.format;
@@ -17,5 +17,9 @@ export class SaveNewVideo{
         videoMetadata["path"] = formatMetaData?.filename
 
         return await this.videoRepository.create(videoMetadata, categories);
+    }
+
+    async getFilm(categoryFilm:string){
+        return await this.videoRepository.get(categoryFilm)
     }
 }

@@ -8,6 +8,7 @@ class MediaCategory extends Model {}
 MediaCategory.init({
     media_id: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
         references: {
           model: Media,
           key: 'media_id'
@@ -16,6 +17,7 @@ MediaCategory.init({
       },
       category_id: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
         references: {
           model: Categories,
           key: 'category_id'

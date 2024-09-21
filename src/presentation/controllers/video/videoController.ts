@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { SaveNewVideo } from "../../../use_cases/media/SaveNewVideo";
+import { FilmsUseCase } from "../../../use_cases/media/filmsUseCase";
 import Busboy from 'busboy';
 import fs from "fs";
 import path from 'path';
 
 export class VideoController {
-    constructor (private saveNewVideo: SaveNewVideo) {}
+    constructor (private filmsUseCase: FilmsUseCase) {}
 
     async saveVideo(req: Request, res: Response) {
         const busboy = Busboy({headers: req.headers})
@@ -42,7 +42,7 @@ export class VideoController {
         busboy.on('finish', async () => {
             try {
                 if (videoPath) {
-                    await this.saveNewVideo.execute(videoPath, bodyVideo, categories);
+                    await this.filmsUseCase.saveFilm(videoPath, bodyVideo, categories);
                     res.send("Arquivo enviado e salvo com sucesso");
                 } else {
                     res.status(400).send("Nenhum arquivo enviado");
@@ -54,5 +54,13 @@ export class VideoController {
         })
         
         req.pipe(busboy)
+    };
+
+    async getVideo(req: Request, res: Response) {
+        const category = req.query.category ? req.query.category as string : 'all';
+
+        const allFilms = await this.filmsUseCase.getFilm(category)
+
+        res.status(200).send(allFilms)
     }
 }

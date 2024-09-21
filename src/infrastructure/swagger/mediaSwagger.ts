@@ -44,7 +44,7 @@
  *           type: file
  *       - name: media_type
  *         in: query
- *         required: true
+ *         required: true 
  *         description: Tipo da midia (film ou serie)
  *         schema: 
  *           type: string

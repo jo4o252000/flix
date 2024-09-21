@@ -2,6 +2,7 @@ import {Video} from '../entities/video';
 
 export interface VideoRepository{
     create(videoMetadata:any, categories:any): Promise<Video>;
+    get(categoryFilme:string): Promise<any>;
 }
 
 export interface IVideoMetadata{

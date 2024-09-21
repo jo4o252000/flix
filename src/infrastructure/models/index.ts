@@ -3,17 +3,10 @@ import Categories from './media/CategoriesModel';
 import MediaCategory from './media/mediaCategoriesModel';
 import sequelizeConnect from '../db/mysql/connect';
 
-Media.belongsToMany(Categories, {
-    through: MediaCategory,
-    foreignKey: 'media_id',
-    otherKey: 'category_id'
-});
-
-Categories.belongsToMany(Media, {
-    through: MediaCategory,
-    foreignKey: 'category_id',
-    otherKey: 'media_id'
-})
+MediaCategory.belongsTo(Media, { foreignKey: 'media_id', as: 'Media' });
+MediaCategory.belongsTo(Categories, { foreignKey: 'category_id' });
+Media.hasMany(MediaCategory, { foreignKey: 'media_id', as: 'MediaCategories' });
+Categories.hasMany(MediaCategory, { foreignKey: 'category_id' });
 
 sequelizeConnect.sync({force: false})
     .then(() => {
